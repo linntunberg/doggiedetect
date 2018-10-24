@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+
+
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app</Text>
+        <Text style={styles.logo}>Doggie Detect</Text>
+        
       </View>
     );
   }
@@ -14,8 +17,14 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'pink',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+    logo: {
+      // alignItems: 'center',
+      // justifyContent: 'center',
+      fontSize: 70,
+      textAlign: 'center',
   },
 });
