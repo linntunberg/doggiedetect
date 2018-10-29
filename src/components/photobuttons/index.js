@@ -31,10 +31,13 @@ export default class Photobuttons extends React.Component {
 
 }
 
+
 const styles = StyleSheet.create({
 
   buttons: {
     flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   button: {
