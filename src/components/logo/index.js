@@ -28,16 +28,21 @@ const styles = StyleSheet.create({
   title: {
     textAlign: 'center',
     fontSize: 50,
+    margin: 20,
+  },
+
+  pawprint: {
+    width: 150,
+    height: 150,
+    margin: 20,
   },
 
   titletext: {
     textAlign: 'center',
     fontSize: 20,
+    padding: 30,
   },
 
-  pawprint: {
-    width: 100,
-    height: 100,
-  },
+
 
 });

@@ -7,15 +7,13 @@ export default class Photobuttons extends React.Component {
     return (
       <View style={styles.buttons}>
               <TouchableOpacity
-                style={styles.button}
                 onPress={this.takePhoto}>
-                <Text>Take Photo</Text>
+                <Text style={styles.button}>Take Photo</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
-                style={styles.button}
                 onPress={this.uploadPhoto}>
-                <Text>Upload Photo</Text>
+                <Text style={styles.button}>Upload Photo</Text>
               </TouchableOpacity>
       </View>
     );
@@ -31,7 +29,6 @@ export default class Photobuttons extends React.Component {
 
 }
 
-
 const styles = StyleSheet.create({
 
   buttons: {
@@ -41,13 +38,13 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    padding: 2,
+    padding: 6,
     borderStyle: 'solid',
     borderWidth: 3,
-    width: 100,
-    height: 30,
+    width: 150,
     margin: 10,
-
+    textAlign: 'center',
+    fontSize: 20,
   },
 
 });
