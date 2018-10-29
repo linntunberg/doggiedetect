@@ -1,13 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, Button } from 'react-native';
 import Logo from './src/components/logo/index';
+import Photobuttons from './src/components/photobuttons/index';
 
 
 export default class App extends React.Component {
   render() {
+
     return (
       <View style={styles.container}>
-      <Logo />
+        <Logo />
+        <Photobuttons />
       </View>
     );
   }
@@ -16,12 +19,8 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
     backgroundColor: 'white',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-    logo: {
-      fontSize: 70,
-      textAlign: 'center',
   },
 });

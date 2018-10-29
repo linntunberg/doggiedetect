@@ -23,5 +23,10 @@ const styles = StyleSheet.create({
   titletext: {
     textAlign: 'center',
     fontSize: 20,
-  }
+  },
+  logo: {
+    fontSize: 70,
+    textAlign: 'center',
+  },
+
 });
