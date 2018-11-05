@@ -1,10 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
-
+import CameraRollPicker from 'react-native-camera-roll-picker';
+import { ImagePicker } from 'expo';
 
 export default class Photobuttons extends React.Component {
+  getSelectedImages(){
+
+  }
+
   render() {
     return (
+
       <View style={styles.buttons}>
               <TouchableOpacity
                 onPress={this.takePhoto}>
@@ -15,18 +21,23 @@ export default class Photobuttons extends React.Component {
                 onPress={this.uploadPhoto}>
                 <Text style={styles.button}>Upload Photo</Text>
               </TouchableOpacity>
+
+
       </View>
     );
   }
 
   takePhoto = () => {
-  alert('Take Photo');
+  alert('This should open the phone camera, then you should be able to take a photo for photo analysis.');
   }
 
-  uploadPhoto = () => {
-  alert('Upload photo');
-  }
+  uploadPhoto = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      // aspect: [4, 3],
+    });
 
+  }
 }
 
 const styles = StyleSheet.create({

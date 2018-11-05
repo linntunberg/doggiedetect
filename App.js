@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 import Logo from './src/components/logo/index';
 import Photobuttons from './src/components/photobuttons/index';
-
+import Dogapi from './src/components/dogapi/index';
 
 export default class App extends React.Component {
   render() {
@@ -11,6 +11,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <Logo />
         <Photobuttons />
+        <Dogapi />
       </View>
     );
   }
