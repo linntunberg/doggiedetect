@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, ActivityIndicator, FlatList } from 'react-native';
-import { API_KEY } from 'react-native-dotenv';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 
 export default class Dogapi extends Component {
@@ -15,7 +14,7 @@ export default class Dogapi extends Component {
 
   componentDidMount() {
 
-      return fetch(`https://api.thedogapi.com/v1/breeds?API_KEY=${API_KEY}`)
+      return fetch('https://api.thedogapi.com/v1/breeds?API_KEY=9ab8981a-551b-4d9e-821d-467a83c83771')
         .then ( (response) => response.json() ) //taking the response from the API and convert it to a json object
         .then ( (responseJson) => { //taking the json object
 
@@ -36,7 +35,7 @@ export default class Dogapi extends Component {
       console.log("loading");
       return (
         <View style={styles.container}>
-          <ActivityIndicator />
+
         </View>
       )
     } else {

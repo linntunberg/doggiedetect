@@ -3,6 +3,7 @@ import { StyleSheet, View, Button } from 'react-native';
 import Logo from './src/components/logo/index';
 import Photobuttons from './src/components/photobuttons/index';
 import Dogapi from './src/components/dogapi/index';
+import Visionapi from './src/components/visionapi/index';
 
 export default class App extends React.Component {
   render() {

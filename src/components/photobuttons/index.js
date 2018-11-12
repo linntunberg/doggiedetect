@@ -1,12 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
-import CameraRollPicker from 'react-native-camera-roll-picker';
-import { ImagePicker } from 'expo';
+import { ImagePicker, FileSystem } from 'expo';
+// import RNFetchBlob from 'rn-fetch-blob';
 
 export default class Photobuttons extends React.Component {
-  getSelectedImages(){
-
-  }
 
   render() {
     return (
@@ -21,24 +18,61 @@ export default class Photobuttons extends React.Component {
                 onPress={this.uploadPhoto}>
                 <Text style={styles.button}>Upload Photo</Text>
               </TouchableOpacity>
-
-
       </View>
     );
   }
 
-  takePhoto = () => {
-  alert('This should open the phone camera, then you should be able to take a photo for photo analysis.');
-  }
-
   uploadPhoto = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: 'Images',
       allowsEditing: true,
-      // aspect: [4, 3],
+      base64: true,
+      aspect: [4, 3],
     });
+    console.log(result);
+    this.vision(result.base64)
+    // fetch("GET", result.uri)
+    // .then(console.log)
+  }
+
+  takephoto = async () => {
+    let camera = await ImagePicker.launchCameraAsync({
+      mediaTypes: 'Images',
+      exif: true,
+      allowsEditing: true,
+      quality: 0.7,
+      base64: true,
+      aspect: [4, 3]
+    });
+    console.log(camera.uri);
 
   }
+
+  vision(image) {
+    fetch('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDGlVNOQ0QLRVmR1nV9_njdo8FIk-2w84E', {
+      method: 'POST',
+      body: JSON.stringify({
+        "requests": [
+          {
+            "image": {
+              "content": image
+            },
+            "features": [
+              {
+                "type": "LABEL_DETECTION"
+              }
+            ]
+          }
+        ]
+      })
+    })
+    .then(res => res.json())
+    .then(console.log)
+    .catch(console.log)
+  }
 }
+
+
 
 const styles = StyleSheet.create({
 
