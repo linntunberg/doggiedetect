@@ -5,16 +5,12 @@ import Photobuttons from './src/components/photobuttons/index';
 import Dogapi from './src/components/dogapi/index';
 
 export default class App extends React.Component {
-  constructor(props) {
-  super(props);
-  // this.state = { mood: 'decent' };
-}
+
 
   render() {
 
     return (
       <View style={styles.container}>
-      // <Text>{this.state.mood}</Text>
         <Logo />
         <Photobuttons />
         <Dogapi />
