@@ -29,10 +29,9 @@ export default class Photobuttons extends React.Component {
       base64: true,
       aspect: [4, 3],
     });
-    console.log(result);
-    this.vision(result.base64)
-    // fetch("GET", result.uri)
-    // .then(console.log)
+    console.log(result)
+    this.vision(result.base64) //'this' calls on something in the same class, sends back the base64 result
+
   }
 
   takephoto = async () => {
@@ -44,7 +43,7 @@ export default class Photobuttons extends React.Component {
       base64: true,
       aspect: [4, 3]
     });
-    console.log(camera.uri);
+    console.log(camera.uri)
 
   }
 
@@ -71,8 +70,6 @@ export default class Photobuttons extends React.Component {
     .catch(console.log)
   }
 }
-
-
 
 const styles = StyleSheet.create({
 
