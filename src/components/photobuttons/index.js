@@ -10,64 +10,16 @@ export default class Photobuttons extends React.Component {
 
       <View style={styles.buttons}>
               <TouchableOpacity
-                onPress={this.takePhoto}>
+                onPress={this.props.takePhoto}>
                 <Text style={styles.button}>Take Photo</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
-                onPress={this.uploadPhoto}>
+                onPress={this.props.uploadPhoto}>
                 <Text style={styles.button}>Upload Photo</Text>
               </TouchableOpacity>
       </View>
     );
-  }
-
-  uploadPhoto = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: 'Images',
-      allowsEditing: true,
-      base64: true,
-      aspect: [4, 3],
-    });
-    console.log(result)
-    this.vision(result.base64) //'this' calls on something in the same class, sends back the base64 result
-
-  }
-
-  takephoto = async () => {
-    let camera = await ImagePicker.launchCameraAsync({
-      mediaTypes: 'Images',
-      exif: true,
-      allowsEditing: true,
-      quality: 0.7,
-      base64: true,
-      aspect: [4, 3]
-    });
-    console.log(camera.uri)
-
-  }
-
-  vision(image) {
-    fetch('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDGlVNOQ0QLRVmR1nV9_njdo8FIk-2w84E', {
-      method: 'POST',
-      body: JSON.stringify({
-        "requests": [
-          {
-            "image": {
-              "content": image
-            },
-            "features": [
-              {
-                "type": "LABEL_DETECTION"
-              }
-            ]
-          }
-        ]
-      })
-    })
-    .then(res => res.json())
-    .then(console.log)
-    .catch(console.log)
   }
 }
 
