@@ -6,14 +6,6 @@ export default class Dogapi extends Component {
 
   render() {
 // console.log(this.state.dataSource);
-    if (this.props.isLoading) {
-      console.log("loading");
-      return (
-        <View style={styles.container}>
-
-        </View>
-      )
-    } else {
       console.log(this.props.dataSource);
       return (
         <FlatList
@@ -28,7 +20,7 @@ export default class Dogapi extends Component {
       ) //map function to map everything in the data source. value, and key, which is breed.
     }
   }
-}
+
 
 
 const styles = StyleSheet.create({
