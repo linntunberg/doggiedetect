@@ -1,5 +1,5 @@
 <strong>Exam Project:</strong><br> 
-DoggieDetect<br>
+DoggieDetect: Dog breed image recognizer<br>
 Linn Tunberg<br>
 November 2018<br>
 
