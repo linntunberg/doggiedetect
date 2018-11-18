@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, View, Button, Text, Image, ImageStore, ImageEditor } from 'react-native';
 import Logo from './src/components/logo/index';
 import Photobuttons from './src/components/photobuttons/index';
-import Dogapi from './src/components/dogapi/index';
 import { ImagePicker, FileSystem, Camera, Permissions } from 'expo';
 
 export default class App extends React.Component {
@@ -34,11 +33,9 @@ export default class App extends React.Component {
       base64: true,
     });
     this.vision(upload.base64) //'this' calls on something in the same class, sends back the base64 result
-
   }
 
   takePhoto = async () => {
-    console.log('yes')
     let camera = await ImagePicker.launchCameraAsync({
       mediaTypes: 'Images',
       allowsEditing: true,
@@ -48,10 +45,7 @@ export default class App extends React.Component {
     this.cropImage(camera.uri)
     .then(data => this.vision(data))
     .catch(console.log)
-
-
   }
-
 
   cropImage = (image) => {
     return new Promise(
@@ -130,6 +124,4 @@ const styles = StyleSheet.create({
     fontSize: 20,
     margin: 20,
   }
-
-
 });

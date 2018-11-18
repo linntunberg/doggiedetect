@@ -7,7 +7,6 @@ export default class Photobuttons extends React.Component {
 
   render() {
     return (
-
       <View style={styles.buttons}>
               <TouchableOpacity
                 onPress={this.props.takePhoto}>
