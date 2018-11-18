@@ -1,5 +1,6 @@
-<strong>Exam Project:</strong><br> 
-DoggieDetect: Dog breed image recognition<br>
+<strong>Exam Project</strong><br> 
+<img src="https://media.giphy.com/media/Ood1OSF92jubS/giphy.gif" alt="Dog gif"><br>
+DoggieDetect- Dog breed image recognition<br>
 Linn Tunberg<br>
 November 2018<br>
 
@@ -12,11 +13,5 @@ November 2018<br>
 -Google's Cloud Vision API<br>
 -The Dog API<br>
 
-
-<img src="https://media.giphy.com/media/Ood1OSF92jubS/giphy.gif" alt="Dog gif">
-
 <img src="https://media.giphy.com/media/10SPpae7SQxpe/giphy.gif" alt="Dog gif">
 
-<img src="https://media.giphy.com/media/GeOmCKve9ofVC/giphy.gif" alt="Dog gif">
-
-<img src="https://media.giphy.com/media/ekYlcLaHaQjgQ/giphy.gif" alt="Dog gif">
