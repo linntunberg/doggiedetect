@@ -66,42 +66,49 @@ export default class App extends React.Component {
   }
 
   vision(image) {
-    fetch('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDGlVNOQ0QLRVmR1nV9_njdo8FIk-2w84E', {
-      method: 'POST',
-      body: JSON.stringify({
-        "requests": [
-          {
-            "image": {
-              "content": image
-            },
-            "features": [
-              {
-                "type": "LABEL_DETECTION"
-              }
-            ]
-          }
-        ]
-      })
-    })
-    .then(res => res.json())
-    //.then(console.log)
-    .then(data => {
-      console.log(this.state.dataSource); //name-dogapi array
-      console.log(data.responses[0].labelAnnotations); //description-visionapi array
-
-      var dogarray = this.state.dataSource; //here we simply put the array in a variable
-      var visionarray = data.responses[0].labelAnnotations;
-
-      visionarray.forEach((result) => { //for each result from the visionapi (all of the different suggestions or results we get in the vision response)
-        const founddog = dogarray.find((dog) => { //here we create a variable for a find function that goes through the dog api. 'dog' is just a name, so just a reference to each index, value
-          return result.description === dog.name.toLowerCase() //if the vision api is equal to the dog api, return
+      this.setState({notFound: false, founddog: false})
+      fetch('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDGlVNOQ0QLRVmR1nV9_njdo8FIk-2w84E', {
+        method: 'POST',
+        body: JSON.stringify({
+          "requests": [
+            {
+              "image": {
+                "content": image
+              },
+              "features": [
+                {
+                  "type": "LABEL_DETECTION"
+                }
+              ]
+            }
+          ]
         })
-        if (founddog) //if the dog is found in the api, set the state to founddog, then in the render it states that if founddog, and the name is in the api, return.
-        this.setState({founddog: founddog}) //double checks
       })
-    })
-    .catch(console.log) //in render, it states, if founddog is true, then print out the name
-  }
+      .then(res => res.json())
+      //.then(console.log)
+      .then(data => {
+        console.log(this.state.dataSource); //name-dogapi array
+        console.log(data.responses[0].labelAnnotations); //description-visionapi array
+
+        var dogarray = this.state.dataSource; //here we simply put the array in a variable
+        var visionarray = data.responses[0].labelAnnotations;
+
+        var found = false
+
+        visionarray.forEach((result) => { //for each result from the visionapi (all of the different suggestions or results we get in the vision response)
+          const founddog = dogarray.find((dog) => { //here we create a variable for a find function that goes through the dog api. 'dog' is just a name, so just a reference to each index, value
+            return result.description === dog.name.toLowerCase() //if the vision api is equal to the dog api, return
+          })
+          if (founddog){ //if the dog is found in the api, set the state to founddog, then in the render it states that if founddog, and the name is in the api, return.
+            found = true
+            this.setState({founddog: founddog, notFound: false}) //double checks
+          }
+          else if(!found)
+          this.setState({notFound: true, founddog: false})
+        })
+      })
+      .catch(console.log) //in render, it states, if founddog is true, then print out the name
+    }
 
   render() {
     return (
@@ -109,6 +116,7 @@ export default class App extends React.Component {
         <Logo />
         <Photobuttons uploadPhoto = {this.uploadPhoto} takePhoto = {this.takePhoto}/>
         <Text style={styles.dogbreed}>{this.state.founddog && this.state.founddog.name}</Text>
+        <Text style={styles.notFound}>{this.state.notFound && <Text>Hmm... I don't recognize that dog</Text>}</Text>
       </View>
     );
   }
@@ -123,5 +131,10 @@ const styles = StyleSheet.create({
   dogbreed: {
     fontSize: 20,
     margin: 20,
+  },
+  notFound: {
+    fontSize: 20,
+    margin: 20,
+    justifyContent: 'center',
   }
 });
