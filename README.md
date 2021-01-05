@@ -3,7 +3,7 @@
 
 
 ## DoggieDetect - Yrgo Exam Project 
-Dog breed image recognition<br>
+Dog breed image recognition app<br>
 Linn Tunberg<br>
 November 2018<br>
 
